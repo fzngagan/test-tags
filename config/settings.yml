@@ -1,0 +1,3 @@
+plugins:
+  test_tags_enabled:
+    default: true
