@@ -5,15 +5,13 @@
 # version: 0.1
 # author: Faizaan
 
-
-after_initialize do
-  module ModifyTopicTagsMixin
-    def all_tags
-      return super unless SiteSetting.test_tags_enabled
-      @tags = super.reverse
-      @tags
-    end
+module ModifyTopicTagsMixin
+  def all_tags
+    return super unless SiteSetting.test_tags_enabled
+    @tags = super.reverse
+    @tags
   end
-
-  TopicTagsMixin.prepend ModifyTopicTagsMixin
 end
+
+load File.expand_path("app/serializers/concerns/topic_tags_mixin.rb")
+TopicTagsMixin.prepend ModifyTopicTagsMixin
